@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<{include file='admin/lib/meta.html'}>
+<link rel="shortcut icon" type="image/png" href="<{$APP_PATH}>/i/images/logo.png" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/vfb2b.css" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/main.css" />
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/admin/vfb2b.js"></script>
+<script type="text/javascript">
+function submitForm(){
+  $('#name').dbaFieldChecker({rules:{required:[true, '姓名不能为空'], maxlen:[60, '姓名不能超过60个字符']}});
+  $('#email').dbaFieldChecker({rules:{required:[true, '电子邮箱不能为空'], email:[true, '无效的电子邮箱地址']}});
+  $('#phone').dbaFieldChecker({rules:{required:[true, '电话不能为空'], phone:[true, '无效的电话格式']}});
+  if($('input[name=baptized]:checked').length<=0)
+  {
+    $('#baptized_err').dbaFieldChecker({rules:{required:[true, '请告诉我们您是否已受洗？']}});
+  }
+  else
+  {
+    $('#baptized_err').dbaFieldChecker({rules:{required:[false, '请告诉我们您是否已受洗？']}});     
+  }
+  if($('input[name=contact]:checked').length<=0)
+  {
+    $('#contact_err').dbaFieldChecker({rules:{required:[true, '您是否愿意我们继续联络您？']}});
+  }
+  else
+  {
+    $('#contact_err').dbaFieldChecker({rules:{required:[false, '您是否愿意我们继续联络您？']}}); 
+  }
+  
+  
+  $('form').dbaFormChecker();
+}
+
+</script>
+</head>
+<body>
+<div class="content">
+  <div class="loc"><h1><i class="icon"></i>编辑新到人员</h1></div>
+  <form method="post" action="<{url m=$MOD c='saints' a='editNewcomer' step='update'}>">
+    <input type="hidden" name="id" value="<{$new_comer.user_id}>" />
+    <input type="hidden" name="<{$_SESSION.ADMIN_FORM_TOKEN.KEY}>" value="<{$_SESSION.ADMIN_FORM_TOKEN.VAL}>" />
+    <div class="box">
+      <div class="module">
+        <table class="dataform">
+          <tr>
+            <th width="100">姓名<br />Name</th>
+            <td><input class="w200 txt" name="name" id="name" type="text" value="<{$new_comer.name}>" /><p class="c999 mt10">修改新来人员的姓名</p></td>
+          </tr>
+          <tr>
+            <th>电话<br />Phone</th>
+            <td><input class="w200 txt" name="phone" id="phone" type="text" value="<{$new_comer.phone}>" /><p class="c999 mt10">修改新来人员的联系电话</p></td>
+          </tr>
+          <tr>
+            <th>电邮<br />Email</th>
+            <td><input class="w200 txt" name="email" id="email" type="text"  value="<{$new_comer.email}>"/><p class="c999 mt10">修改新来人员的电子邮件地址</p>
+            </td>
+          </tr>
+          <tr>
+            <th>介绍人<br />Referral</th>
+            <td><input class="w200 txt" name="referral" id="referral" type="text"  value="<{$new_comer.referral}>"/><p class="c999 mt10">修改新来人员的介绍人</p>
+            </td>
+          </tr>
+          <tr>
+            <th>住址<br />Address</th>
+            <td><input class="w200 txt" name="address" id="address" type="text"  value="<{$new_comer.address}>"/><p class="c999 mt10">修改新来人员的通讯地址</p>
+            </td>
+          </tr>
+          <tr>
+            <th>受洗?<br />Baptized?</th>
+            <td>
+                <input type="radio" name="baptized" id="baptized" value="1" <{if $new_comer.baptized==1}>checked<{/if}> />已受洗
+                &nbsp;<input type="radio" name="baptized" value="0" <{if $new_comer.baptized==0}>checked<{/if}> />未受洗
+                <input type="hidden" id="baptized_err" />
+                <p class="c999 mt10">修改新来人员的受洗情况</p>
+            </td>
+          </tr>
+          <tr>
+            <th>联系您?<br />Contact?</th>
+            <td>
+                <input type="radio" name="contact" value="1" <{if $new_comer.contact==1}>checked<{/if}> /> 电话
+                <input type="radio" name="contact" value="2" <{if $new_comer.contact==2}>checked<{/if}> /> 电邮
+                <input type="radio" name="contact" value="3" <{if $new_comer.contact==3}>checked<{/if}> /> 都可以
+                <input type="radio" name="contact" value="0" <{if $new_comer.contact==0}>checked<{/if}> /> 不用了
+                <input type="hidden" id="contact_err" />
+                <p class="c999 mt10">修改新来人员的继续联络方式</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="submitbtn" style="padding-left:10px;padding-right:10px;">
+        <p class="ta-c mt20"><button type="button" class="ubtn btn" onclick="submitForm()">提交修改</button></p>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<{include file='admin/lib/meta.html'}>
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/vfb2b.css" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/main.css" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/datetimepicker.css" />
+
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/datetimepicker.js"></script>
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/admin/vfb2b.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('#tabs').vdsTabsSwitch();
+  $('#message_date').datetimepicker ({
+    format:'Y-m-d',
+    formatDate: 'Y-m-d',
+    allowBlank:true,
+    onShow:function(ct){
+//      this.setOptions({maxDate:$('#end_date').val()? $('#end_date').val():false})
+    }, timepicker:false
+  }); 
+});
+
+function submitForm(){
+  $('#message_date').dbaFieldChecker({rules: {required:[true, '请输入信息日期'], maxlen:[10, '日期不能超过10个字符']}});
+  $('#speaker').dbaFieldChecker({rules: {required:[true, '请输入讲员名字'], maxlen:[20, '讲员名字不能超过20个字符']}});
+  $('#theme').dbaFieldChecker({rules: {required:[true, '请输入信息主题'], maxlen:[128, '信息主题不能超过128个字符']}});
+  $('#goods-form').dbaFormChecker({beforeSubmit:function(){$.vdsLoadingBar(true);}});
+}
+    
+
+</script>
+</head>
+<body>
+<{if $_GET['a'] == 'add'}>
+<div class="content">
+  <div class="loc"><h2><i class="icon"></i>添加新信息</h2></div>
+  <form method="post" enctype="multipart/form-data" action="<{url m=$MOD c='message' a='add' step='submit'}>" id="goods-form">
+    <input type="hidden" name="<{$_SESSION.ADMIN_FORM_TOKEN.KEY}>" value="<{$_SESSION.ADMIN_FORM_TOKEN.VAL}>" />
+    <div class="box">
+      <div class="tabs mt5">
+        <ul id="tabs">
+          <li class="cur">基本信息</li>
+        </ul>
+      </div>
+      <!-- 基本信息开始 -->
+      <div class="module swcon mt5">
+        <table class="dataform">
+          <tr>
+            <th width="110">信息日期</th>
+            <td><input class="w400 txt" name="date" id="message_date" type="text" autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <th width="110">讲员</th>
+            <td><input class="w400 txt" name="speaker" id="speaker" type="text" /></td>
+          </tr>
+          <tr>
+            <th width="110">信息主题</th>
+            <td><input class="w400 txt" name="theme" id="theme" type="text" /></td>
+          </tr>
+          <tr>
+            <th>音频文件</th>
+            <td>
+              <input type="file" name="audio_file" />
+            </td>
+          </tr>
+          <tr>
+            <th>Youtube Link</th>
+            <td>
+              <input class="w400 txt" name="youtube_link" value="" placeholder="不要超过512个字符" />
+            </td>
+          </tr>
+          <tr>
+            <th>福音信息</th>
+            <td>
+              <div class="pad5">
+                <label><input type="radio" name="gospel" value="1" /><font class="green ml5">福音信息</font></label>
+                <label class="ml20"><input type="radio" name="gospel" value="0" checked="checked" /><font class="red ml5">非福音信息</font></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>特别聚会信息</th>
+            <td>
+              <div class="pad5">
+                <label><input type="radio" name="special" value="1" /><font class="green ml5">特别聚会信息</font></label>
+                <label class="ml20"><input type="radio" name="special" value="0" checked="checked" /><font class="red ml5">非特别聚会信息</font></label>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- 基本信息结束 -->
+      <div class="submitbtn">
+        <button type="button" class="ubtn btn" onclick="submitForm()">保存并提交</button>
+        <button type="reset" class="fbtn btn">重置表单</button>
+      </div>
+    </div>
+  </form>
+</div>
+<{else}>
+<div class="content">
+  <div class="loc"><h2><i class="icon"></i>编辑信息:<font class="ml5">[<{$rs.id}>]</font></h2></div>
+  <form method="post" enctype="multipart/form-data" action="<{url m=$MOD c='message' a='edit' step='update' id=$rs.id}>" id="goods-form">
+    <input type="hidden" name="<{$_SESSION.ADMIN_FORM_TOKEN.KEY}>" value="<{$_SESSION.ADMIN_FORM_TOKEN.VAL}>" />
+    <input type="hidden" name="mid" value="<{$rs.id}>" />
+    <div class="box">
+      <div class="tabs mt5">
+        <ul id="tabs">
+          <li class="cur">基本信息</li>
+        </ul>
+      </div>
+      <!-- 基本信息开始 -->
+      <div class="module swcon mt5">
+        <table class="dataform">
+          <tr>
+            <th width="110">信息日期</th>
+            <td><input class="w400 txt" name="date" id="message_date" type="text" value="<{$rs.date}>" autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <th width="110">讲员</th>
+            <td><input class="w400 txt" name="speaker" id="speaker" type="text" value="<{$rs.speaker}>" /></td>
+          </tr>
+          <tr>
+            <th width="110">信息主题</th>
+            <td><input class="w400 txt" name="theme" id="theme" type="text" value="<{$rs.theme}>" /></td>
+          </tr>
+          <tr>
+            <th>音频文件</th>
+            <td>
+              <p><{$rs.audio_file}></p><p class="mt5"><input type="file" name="audio_file" /></p>
+            </td>
+          </tr>
+          <tr>
+            <th>Youtube Link</th>
+            <td>
+              <input class="w400 txt" name="youtube_link" value="<{$rs.youtube_link}>" placeholder="不要超过512个字符" />
+            </td>
+          </tr>
+          <tr>
+            <th>福音信息</th>
+            <td>
+              <div class="pad5">
+                <label><input type="radio" name="gospel" value="1" <{if $rs.gospel==1}>checked<{/if}> /><font class="green ml5">福音信息</font></label>
+                <label class="ml20"><input type="radio" name="gospel" value="0" <{if $rs.gospel==0}>checked<{/if}> /><font class="red ml5">非福音信息</font></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>特别聚会信息</th>
+            <td>
+              <div class="pad5">
+                <label><input type="radio" name="special" value="1" <{if $rs.type==1}>checked<{/if}> /><font class="green ml5">特别聚会信息</font></label>
+                <label class="ml20"><input type="radio" name="special" value="0" <{if $rs.type==0}>checked<{/if}> /><font class="red ml5">非特别聚会信息</font></label>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- 基本信息结束 -->
+      <div class="submitbtn">
+        <button type="button" class="ubtn btn" onclick="submitForm()">保存并更新</button>
+        <button type="reset" class="fbtn btn">重置表单</button>
+      </div>
+    </div>
+  </form>
+</div>
+<{/if}>
+</body>
+</html>

@@ -1,0 +1,46 @@
+.libom {width:auto;height:auto;padding:5px;border:1px solid #D5ECEE;background:#fff;overflow:hidden}
+
+.paging {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    font-size:12px;
+}
+
+.paging a {
+    border: 1px solid #1369C0;
+    color: #1D7AD9;
+    background: #fdfdfd;
+}
+
+.paging a, .paging span {
+    margin-right: 5px;
+    padding: 5px 5px;
+    background: #fff;
+    display: inline-block;
+    display: -moz-inline-stack;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.paging span {
+    background: #f9f9f9;
+}
+
+.paging span.tot, .paging span.pct {
+    margin-right: 10px;
+    color: #999;
+    background: none;
+}
+
+.paging span.disabled {
+    border: #ddd 1px solid;
+    color: #bbb;
+}
+
+.paging span.cur {
+    border: 1px solid #006699;
+    color: #fff;
+    background: #1D7AD9;
+}
+

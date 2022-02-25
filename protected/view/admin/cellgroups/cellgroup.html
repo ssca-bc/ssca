@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="" />
+<meta name="robots" content="NOARCHIVE,NOCACHE" />
+<meta HTTP-EQUIV="pragma" content="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" content="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" content="0">
+<link rel="shortcut icon" type="image/png" href="<{$APP_PATH}>/i/images/logo.png" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/vfb2b.css" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/main.css" />
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/admin/vfb2b.js"></script>
+<script type="text/javascript">
+function submitForm(){
+  $('#name').dbaFieldChecker({rules:{required:[true, '姓名不能为空'], maxlen:[60, '姓名不能超过60个字符']}});
+  //$('#email').dbaFieldChecker({rules:{required:[true, '电子邮箱不能为空'], email:[true, '无效的电子邮箱地址']}});
+  $('#phone').dbaFieldChecker({rules:{required:[true, '电话不能为空'], phone:[true, '无效的电话格式']}});
+  if($('input[name=baptized]:checked').length<=0)
+  {
+    $('#baptized_err').dbaFieldChecker({rules:{required:[true, '请告诉我们您是否已受洗？']}});
+  }
+  else
+  {
+    $('#baptized_err').dbaFieldChecker({rules:{required:[false, '请告诉我们您是否已受洗？']}});     
+  }
+  if($('input[name=contact]:checked').length<=0)
+  {
+    $('#contact_err').dbaFieldChecker({rules:{required:[true, '您是否愿意我们继续联络您？']}});
+  }
+  else
+  {
+    $('#contact_err').dbaFieldChecker({rules:{required:[false, '您是否愿意我们继续联络您？']}}); 
+  }
+  
+  
+  $('form').dbaFormChecker();
+}
+
+</script>
+</head>
+<body>
+<{if $_GET['a'] == 'addGroup'}>
+<div class="content">
+  <div class="loc"><h1><i class="icon"></i>添加新细胞小组</h1></div>
+  <form method="post" action="<{url m=$MOD c='cellgroups' a='addGroup' step='submit'}>">
+    <input type="hidden" name="<{$_SESSION.ADMIN_FORM_TOKEN.KEY}>" value="<{$_SESSION.ADMIN_FORM_TOKEN.VAL}>" />
+    <div class="box">
+      <div class="module">
+        <table class="dataform">
+          <tr>
+            <th width="100">组名</th>
+            <td><input class="w200 txt" name="name" id="name" type="text" /><p class="c999 mt10">请输入细胞小组名称</p></td>
+          </tr>
+          <tr>
+            <th>组长</th>
+            <td>
+            <select name="leader_id">
+             <{foreach $leaders as $leader}>
+             <option value="<{$leader.user_id}>"><{$leader.name}></option>
+             <{/foreach}>
+            </select>
+            <p class="c999 mt10">请指定一个组长</p></td>
+          </tr>
+        </table>
+      </div>
+      <div class="submitbtn" style="padding-left:10px;padding-right:10px;">
+        <p class="mt20"><button type="button" class="ubtn btn" onclick="submitForm()">提交</button></p>
+      </div>
+    </div>
+  </form>
+</div>
+<{else}>
+<div class="content">
+  <div class="loc ta-c"><h1 style="font-size:16px;"><i class="icon"></i>编辑细胞小组</h1></div>
+  <form method="post" action="<{url m=$MOD c='cellgroups' a='editGroup' step='submit'}>">
+    <input type="hidden" name="id" value="<{$new_comer.user_id}>" />
+    <input type="hidden" name="<{$_SESSION.ADMIN_FORM_TOKEN.KEY}>" value="<{$_SESSION.ADMIN_FORM_TOKEN.VAL}>" />
+    <div class="box">
+      <div class="module">
+        <table class="dataform">
+          <tr>
+            <th width="100">组名</th>
+            <td><input class="w200 txt" name="name" id="name" type="text" /><p class="c999 mt10">请输入细胞小组名称</p></td>
+          </tr>
+          <tr>
+            <th>组长</th>
+            <td>
+            <select name="leader_id">
+             <{foreach $leaders as $leader}>
+             <option value="<{$leader.id}>"><{$leader.name}></option>
+             <{/foreach}>
+            </select>
+            <p class="c999 mt10">请指定一个组长</p></td>
+          </tr>
+        </table>
+      </div>
+      <div class="submitbtn" style="padding-left:10px;padding-right:10px;">
+        <p class="mt20"><button type="button" class="ubtn btn" onclick="submitForm()">提交修改</button></p>
+      </div>
+    </div>
+  </form>
+</div>
+<{/if}>
+</body>
+</html>

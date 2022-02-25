@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="" />
+<meta name="robots" content="NOARCHIVE,NOCACHE" />
+<meta HTTP-EQUIV="pragma" content="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" content="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" content="0">
+<link rel="shortcut icon" type="image/png" href="<{$APP_PATH}>/i/images/logo.png" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/vfb2b.css" />
+<link rel="stylesheet" type="text/css" href="<{$APP_PATH}>/i/css/admin/main.css" />
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<{$APP_PATH}>/i/js/admin/vfb2b.js"></script>
+<script type="text/javascript">
+function editInfo(){
+  var url = "<{url m=$MOD c='usher' a='edit' id=$id}>";
+  window.location.href = url;
+}
+function nextOne(){
+  var url = "<{url m=$MOD c='usher' a='add'}>";
+  window.location.href = url;  
+}
+</script>
+</head>
+<body>
+<{if !empty($new_comer)}>
+<div class="content">
+  <div class="loc ta-c"><h1 style="font-size:16px;"><i class="icon"></i>谢谢您提交的信息</h1></div>
+    <div class="box">
+      <div class="module">
+        <table class="dataform">
+          <tr>
+            <th width="100">姓名/Name</th>
+            <td><{$new_comer.name}></td>
+          </tr>
+          <tr>
+            <th>电话/Phone</th>
+            <td><{$new_comer.phone}></td>
+          </tr>
+          <tr>
+            <th>电邮/Email</th>
+            <td><{$new_comer.email}></td>
+          </tr>
+          <tr>
+            <th>介绍人/Referral</th>
+            <td><{$new_comer.referral}></td>
+          </tr>
+          <tr>
+            <th>住址/Address</th>
+            <td><{$new_comer.address}></td>
+          </tr>
+          <tr>
+            <th>受洗/Baptized?</th>
+            <td><{if $new_comer.baptized ==1}>已受洗<{else}>未受洗<{/if}></td>
+          </tr>
+          <tr>
+            <th>联系您/Contact?</th>
+            <td><{$new_comer.contact_msg}></td>
+          </tr>
+        </table>
+      </div>
+      <div class="submitbtn" style="padding-left:10px;padding-right:10px;">
+        <p>感谢您提供以上信息给我们，若资料有误，请点击下面的"修改资料"按钮。否则请将设备交还给接待人员。</p>
+        <p class="ta-c mt20"><button type="button" class="ubtn btn" onclick="editInfo()">修改资料</button><button type="button" class="ubtn btn" onclick="nextOne()">完成</button></p>
+      </div>
+    </div>
+</div>
+<{else}>
+
+<{/if}>
+</body>
+</html>

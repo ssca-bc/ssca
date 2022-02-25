@@ -1,0 +1,154 @@
+/* Desktop layout :992px.  */
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+/* Desktop layout */
+@media (min-width: 992px) and (max-width: 1024px) {
+  .contact-info ul li {
+    font-size: 13px;
+    margin-right: 5px;
+  }
+
+  .single-features h4 {
+    font-size: 15px;
+  }
+
+  .single-about h3 {
+    font-size: 65px;
+  }
+
+  .single-counter {
+    height: 220px;
+    width: 220px;
+  }
+
+}
+
+/* Tablet layout : Max-width :991px */
+@media (max-width: 991px) {
+  .single-features {
+    margin-bottom: 30px;
+  }
+
+  .aboutus-text {
+    margin-bottom: 30px;
+  }
+
+  .single-counter {
+    margin-bottom: 30px;
+  }
+
+  .single-pricing-table {
+    margin-bottom: 30px;
+  }
+
+  .single-team {
+    margin-bottom: 30px;
+  }
+
+}
+
+
+/* Tablet layout :768px */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .header-bottom h2 {
+    font-size: 45px;
+    line-height: 60px;
+  }
+
+  .contact-info ul {
+    flex-direction: column;
+  }
+
+  .single-about {
+    column-count: 1;
+  }
+
+  .single-about h3 {
+    font-size: 50px;
+    text-align: center;
+  }
+
+}
+
+/* Small mobile  layout :320px */
+@media only screen and (max-width: 767px) {
+  .contact-info {
+    margin-bottom: 20px;
+  }
+
+  .social-menu {
+    margin-bottom: 20px;
+  }
+
+  .search-bar input[type=search] {
+    padding: 10px 26px;
+  }
+
+  .header-bottom h2 {
+    font-size: 23px;
+    line-height: 30px
+  }
+
+  .single-about {
+    column-count: 1;
+  }
+
+  .single-about h3 {
+    font-size: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 21px;
+  }
+
+  .single-contact-text {
+    margin-bottom: 30px;
+  }
+
+}
+
+
+/* Max 480px layout */
+@media only screen and (max-width: 480px) {
+
+    ul.portfolio-nav li {
+      padding: 3px 12px;
+      margin-right: 0px;
+    }
+
+    #separator-area .separator-text p {
+      font-size: 25px;
+      line-height: 50px;
+    }
+}
+
+
+/* Max 360px layout */
+@media only screen and (max-width: 360px) {
+
+
+}
+
+/* Max 320px layout */
+@media only screen and (max-width: 320px) {
+  .contact-info ul li {
+      font-size: 12px;
+  }
+
+  .single-features h4 {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .intro-team h4 {
+    font-size: 13px;
+  }
+
+  .intro-team span {
+    font-size: 13px;
+  }
+
+}
