@@ -6,7 +6,7 @@
 	<title> 南素里基督教会(SOUTH SURREY CHRISTIAN ASSEMBLY) </title>
 
 	<!-- favicon -->
-	<link rel="shortcut icon" type="image/png" href="<{$APP_PATH}>/i/images/logo.png" />
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="<{$common.cssfolder}>/font-awesome.min.css">
@@ -54,11 +54,8 @@
 						<li class="nav-item">
 							<a class="nav-link" data-scroll-nav="3" href="#">特别聚会</a>
 						</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-scroll-nav="4" href="#">儿童圣经故事</a>
-                        </li>
 						<li class="nav-item">
-							<a class="nav-link" data-scroll-nav="5" href="#">联系我们</a>
+							<a class="nav-link" data-scroll-nav="4" href="#">联系我们</a>
 						</li>
 					</ul>
 				</div>
@@ -70,17 +67,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="owl-carousel owl-slider">
-                        <div class="col-md-8 item">
-							<h2>南素里基督教会</h2>
-                            <p><a href="<{url c='hymns' a='index'}>">赞美诗选</a></p>
-							<p>主日网上聚会信息：</p>
-                            <p>开始时间: 三月29日 15时</p>
-                            <p>加入ZOOM会议: <a href="https://us04web.zoom.us/j/3924743928">点击此处加入</a></p>
-                            <p>ZOOM 会议ID: 392 474 3928</p>
-                            <p>ZOOM 会议密码: 232338</p>
-                            <p>网上聚会视频直播链接: <a href="https://youtu.be/DoNtHtJtpGo" style="margin-left: 10px;text-decoration:underline;">主日信息直播</a></p>
-						</div>
-                        <!--
 						<div class="col-md-8 item">
 							<h2>南素里基督教会</h2>
 							<p>南素里基督教会于主历2014年3月9日开始于加拿大BC省的南素里地区，我们的异象：在南素里这块地方广传福音，造就圣徒。</p>
@@ -107,7 +93,6 @@
                             
 							<a href="#contact-area" class="h-btn">联系我们</a>
 						</div>
--->
 					</div>
 				</div>
 			</div>
@@ -138,7 +123,7 @@
 						<h4>
 							我们的盼望
 						</h4>
-						<p>我们相信教会是基督的身体，基督爱教会，为教会舍己，并用水藉着道把教会洗净，成为圣洁，献给自己，作个荣耀的教会。我们盼望当日期满足，荣耀的耶稣基督必将再次降临，来迎娶他圣洁的新娘--由众圣徒组成的教会到天上与他同享荣耀。</p>
+						<p>我们相信教会是基督的身体，基督爱教会，为教会舍己，并用水藉着道把教会洗尽，成为圣洁，献给自己，作个荣耀的教会。我们盼望当日期满足，荣耀的耶稣基督必将再次降临，来迎娶他圣洁的新娘--由众圣徒组成的教会到天上与他同享荣耀。</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
@@ -170,23 +155,19 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:120px;">日期/讲员</th>
+                <th style="width:90px;">日期</th>
+                <th style="width:80px;">讲员</th>
                 <th>主题</th>
-                <th style="text-align:center;">播放音频</th>
-				<th style="text-align:center;">视频链接</th>
+                <th>播放</th>
             </tr>
         </thead>
         <tbody>
             {@each list as v}
             <tr>
-            <td style="text-align:center;">${v.date}<p>${v.speaker}<p></td>
+            <td>${v.date}</td>
+            <td>${v.speaker}</td>
             <td>${v.theme}</td>
-            <td align="center"><a href="<{$APP_PATH}>/messages/sundaymsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
-			<td align="center">
-			{@if v.has_video==1}
-			<a target="_blank" href="${v.youtube_link}"><img src="<{$APP_PATH}>/i/images/youtube.png" style="width:30px;height:30px;" /></a>
-			{@/if}
-			</td>
+            <td><a href="<{$APP_PATH}>/messages/sundaymsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
             </tr>
             {@/each}
         </tbody>
@@ -210,23 +191,19 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:110px;">日期/讲员</th>
+                <th style="width:90px;">日期</th>
+                <th style="width:80px;">讲员</th>
                 <th>主题</th>
-                <th style="text-align:center;">播放音频</th>
-				<th style="text-align:center;">视频链接</th>
+                <th>播放</th>
             </tr>
         </thead>
         <tbody>
             {@each list as v}
             <tr>
-            <td style="text-align:center;">${v.date}<p>${v.speaker}<p></td>
+            <td>${v.date}</td>
+            <td>${v.speaker}</td>
             <td>${v.theme}</td>
-            <td align="center"><a href="<{$APP_PATH}>/messages/sundaymsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
-			<td align="center">
-			{@if v.has_video==1}
-			<a target="_blank" href="${v.youtube_link}"><img src="<{$APP_PATH}>/i/images/youtube.png" style="width:30px;height:30px;" /></a>
-			{@/if}
-			</td>
+            <td><a href="<{$APP_PATH}>/messages/sundaymsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
             </tr>
             {@/each}
         </tbody>
@@ -249,23 +226,19 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width:110px;">日期/讲员</th>
+                <th style="width:90px;">日期</th>
+                <th style="width:80px;">讲员</th>
                 <th>主题</th>
-                <th style="text-align:center;">播放音频</th>
-				<th style="text-align:center;">视频链接</th>
+                <th>播放</th>
             </tr>
         </thead>
         <tbody>
             {@each list as v}
             <tr>
-            <td style="text-align:center;">${v.date}<p>${v.speaker}<p></td>
+            <td>${v.date}</td>
+            <td>${v.speaker}</td>
             <td>${v.theme}</td>
-            <td align="center"><a href="<{$APP_PATH}>/messages/specialmsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
-			<td align="center">
-			{@if v.has_video==1}
-			<a target="_blank" href="${v.youtube_link}"><img src="<{$APP_PATH}>/i/images/youtube.png" style="width:30px;height:30px;" /></a>
-			{@/if}
-			</td>
+            <td><a href="<{$APP_PATH}>/messages/specialmsg/${v.audio_file}"><i class="et-icon ion-social-youtube-outline"></i></a></td>
             </tr>
             {@/each}
         </tbody>
@@ -273,37 +246,7 @@
     </script>
     <!-- special-message-section end -->
 
-    <!-- children bible stories -->
-    <div style="clear:both;height:20px;"></div>
-	<!-- speical-message-section start -->
-	<section id="children-bible-section" data-scroll-index="4">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg" id="children_bible_container">
-                <h3 style="text-align:center;">儿童圣经故事</h3>
-                <table class="table table-striped">
-                <thead>
-                <tr>
-                <th style="width:90px;">序号</th>
-                <th>主题</th>
-                <th>播放</th>
-                </tr>
-                </thead>
-                <tbody>
-                <{foreach $children_stories as $story}>
-                <tr>
-                <td><{$story.id}></td>
-                <td><{$story.theme}></td>
-                <td><a href="<{$APP_PATH}>/lullaby/<{$story.id}>.mp3"><i class="et-icon ion-social-youtube-outline"></i></a></td>
-                </tr>
-                <{/foreach}>
-                </tbody>
-                </table>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- children bible stories  end-->
+	
 
 	<!-- separator-area -->
 	<section id="separator-area">
@@ -321,19 +264,19 @@
 
 	
 	<!-- contact-area -->
-	<section id="contact-area" data-scroll-index="5">
+	<section id="contact-area" data-scroll-index="4">
 		<div class="container z-index">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="single-contact-text">
 						<h4>电邮</h4>
-						<p>myuan@ssca-bc.org<br />&nbsp;</p>
+						<p>info@ssca-bc.org<br />&nbsp;</p>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="single-contact-text">
 						<h4>电话</h4>
-						<p>778-321-7678<br />&nbsp;</p>
+						<p>604-273-2735<br />&nbsp;</p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -517,14 +460,8 @@ function searchSpecialMsg(page_id){
 function gospelMsgPageturn(page_id){
     searchGospelMsg(page_id);
 }
-    
-function specialMsgPageturn(page_id){
-    searchSpecialMsg(page_id);
-}
-    
 </script>
 <{include file='default/lib/sunday_paging.html'}>
 <{include file='default/lib/gospel_paging.html'}>
-<{include file='default/lib/special_paging.html'}>
 </body>
 </html>
