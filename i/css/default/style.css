@@ -269,6 +269,14 @@ a.nav-link.active {
     letter-spacing: 10px;
 }
 
+.header-bottom h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 28px;
+    font-family: 'Open Sans', Sans-serif;
+}
+
 .header-bottom p {
     font-size: 15px;
     color: #fff;
@@ -1320,6 +1328,15 @@ span.blog-date {
   }
 }
 
+.dark-bg a {
+    color: #d35400; /* Burnt orange */
+    text-decoration: none;
+}
+
+.dark-bg a:hover {
+    color: #e67e22;
+    text-decoration: underline;
+}
 .announcement {
     background: #fffdf5;
     border: 1px solid #e0dccc;
