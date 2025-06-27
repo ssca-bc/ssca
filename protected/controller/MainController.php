@@ -42,6 +42,11 @@ class MainController extends BaseController {
         $this->children_stories = $children_stories;
         $this->display($GLOBALS['enabled_theme'].'/index.html');
 	}
+    function actionTest(){
+        $children_stories = array();
+        $this->children_stories = $children_stories;
+        $this->display($GLOBALS['enabled_theme'].'/test.html');
+    }
     
     function actionSundayMsgApi()
     {
