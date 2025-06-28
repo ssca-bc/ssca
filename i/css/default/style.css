@@ -123,6 +123,12 @@ img {
     position: relative;
 }
 
+@media (max-width: 767px) {
+    #header-area {
+        height: auto;
+        min-height: 100vh; /* Ensures at least full viewport height, but grows as needed */
+    }
+}
 
 #header-area:after {
     position: absolute;
@@ -263,6 +269,7 @@ a.nav-link.active {
     color: #fff;
     text-transform: uppercase;
     margin-top: 10%;
+    margin-bottom: 15px;
     line-height: 80px;
     font-weight: 700;
     font-family: 'Josefin Sans', sans-serif;
